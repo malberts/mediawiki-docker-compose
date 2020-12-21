@@ -1,6 +1,6 @@
 # Example configurations for Mediawiki and Docker Compose
 
-Based on the (unofficial) [Mediawiki 1.35.x](https://hub.docker.com/_/mediawiki) Docker image.
+All examples are based on the (unofficial) [Mediawiki 1.35.x](https://hub.docker.com/_/mediawiki) Docker Compose example.
 
 For Apache and Nginx.
 
@@ -30,7 +30,7 @@ The solution is to add the following to your `LocalSettings.php`:
 In the URL, the `mediawiki` domain refers to the name of the `mediawiki` service in `docker-compose.yml`.
 
 The reason for this error is within the `mediawiki` container the implicit default value will be "http://localhost:8080/rest.php".
-However, that default URL does not resolve from inside that container, so instead the URL must be overriden to refer to the domain and port visible in that container.
+However, that default URL does not resolve from inside that container, so instead the URL must be overriden to refer to the hostname and port visible in that container.
 
 As per the [VisualEditor/Parsoid documentation](https://www.mediawiki.org/wiki/Extension:VisualEditor#Linking_with_Parsoid) the extension has to be loaded explicitly because the configuration was overriden.
 
