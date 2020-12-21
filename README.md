@@ -19,7 +19,7 @@ If you use the default Docker Compose example without any additional changes, th
 
 ![Parsoid Error](parsoid_error.png)
 
-The solution is to add the following to your LocalSettings.php:
+The solution is to add the following to your `LocalSettings.php`:
 
     $wgVirtualRestConfig['modules']['parsoid'] = [
         'url' => 'http://mediawiki:80/rest.php',
@@ -27,10 +27,11 @@ The solution is to add the following to your LocalSettings.php:
     wfLoadExtension( 'Parsoid', 'vendor/wikimedia/parsoid/extension.json' );
 
 In the URL, the `mediawiki` domain refers to the name of the `mediawiki` service in `docker-compose.yml`.
-As per the [documentation](https://www.mediawiki.org/wiki/Extension:VisualEditor#Linking_with_Parsoid) the extension has to be loaded explicitly because the configuration was overriden.
 
-The reason for this error is within the mediawiki container the default value will be "http://localhost:8080/rest.php".
-However, that URL does not resolve from inside that container, so instead the URL must be overriden to refer to name and port visible in that container.
+The reason for this error is within the `mediawiki` container the default value will be "http://localhost:8080/rest.php".
+However, that default URL does not resolve from inside that container, so instead the URL must be overriden to refer to name and port visible in that container.
+
+As per the [documentation](https://www.mediawiki.org/wiki/Extension:VisualEditor#Linking_with_Parsoid) the extension has to be loaded explicitly because the configuration was overriden.
 
 ## Short URL
 
