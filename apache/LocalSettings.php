@@ -28,6 +28,9 @@ $wgSitename = "Example";
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
 $wgScriptPath = "";
 
+# Default Docker Compose short URL path.
+$wgArticlePath = "/$1";
+
 ## The protocol and server name to use in fully-qualified URLs
 $wgServer = "http://localhost:8080";
 
