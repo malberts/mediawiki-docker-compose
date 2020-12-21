@@ -6,7 +6,7 @@ For Apache and Nginx.
 
 Additional configurations:
 
-* [VisualEditor/Parsoid URL](#visualeditor-parsoid-url)
+* [VisualEditor/Parsoid URL](#visualeditorparsoid-url)
 * [Short URL](#short-url)
 * [Additional Composer dependencies](#additional-dependencies)
 
