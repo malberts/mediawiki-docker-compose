@@ -1,2 +1,1 @@
-# mediawiki-docker-compose
-Example docker-compose config for Mediawiki
+# Example configurations for Mediawiki and Docker Compose
