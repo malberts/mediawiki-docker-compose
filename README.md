@@ -27,11 +27,15 @@ The solution is to add the following to your `LocalSettings.php`:
     ];
     wfLoadExtension( 'Parsoid', 'vendor/wikimedia/parsoid/extension.json' );
 
-In the URL, for Apache the `mediawiki` hostname refers to the name of the `mediawiki` service in `docker-compose.yml`.
-For Nginx it should be `nginx` instead as it refers to the `nginx` service.
+The `url` value must be changed acording to the `docker-compose.yml` service name:
 
-The reason for this error is within the `mediawiki` container the implicit default value will be "http://localhost:8080/rest.php".
-However, that default URL does not resolve from inside that container, so instead the URL must be overriden to refer to the hostname and port visible in that container.
+| Server            | Service     | url                            |
+| :---------------- | :---------- | :----------------------------- |
+| [Apache](apache)  | `mediawiki` | `http://mediawiki:80/rest.php` |
+| [Nginx](nginx)    | `nginx`     | `http://nginx:80/rest.php`     |
+
+The reason for this error is within the `mediawiki` container the implicit default value will be "`http://localhost:8080/rest.php`".
+However, that default URL does not resolve from inside that container, so instead the URL must be overriden to refer to the hostname and port visible to that container.
 
 As per the [VisualEditor/Parsoid documentation](https://www.mediawiki.org/wiki/Extension:VisualEditor#Linking_with_Parsoid) the extension has to be loaded explicitly because the configuration was overriden.
 
@@ -41,10 +45,10 @@ Add `$wgArticlePath` to `LocalSettings.php`.
 
 The default URL `http://localhost:8080/index.php/Main_Page` will be rewritten to:
 
-| $wgArticlePath | Rewrite                                |
-| :------------- | :------------------------------------- |
-| `"/$1"`        | `http://localhost:8080/Main_Page`      |
-| `"/wiki/$1"    | `http://localhost:8080/wiki/Main_Page` |
+| `$wgArticlePath` | Rewrite                                |
+| :--------------- | :------------------------------------- |
+| `/$1`            | `http://localhost:8080/Main_Page`      |
+| `/wiki/$1        | `http://localhost:8080/wiki/Main_Page` |
 
 
 ## Additional Composer dependencies
