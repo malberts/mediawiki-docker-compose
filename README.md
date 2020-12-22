@@ -48,7 +48,7 @@ The default URL `http://localhost:8080/index.php/Main_Page` will be rewritten to
 | `$wgArticlePath` | Rewrite                                |
 | :--------------- | :------------------------------------- |
 | `/$1`            | `http://localhost:8080/Main_Page`      |
-| `/wiki/$1        | `http://localhost:8080/wiki/Main_Page` |
+| `/wiki/$1`       | `http://localhost:8080/wiki/Main_Page` |
 
 
 ## Additional Composer dependencies
