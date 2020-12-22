@@ -1,4 +1,4 @@
-FROM mediawiki:1.35
+FROM mediawiki:1.35.1
 
 # Composer requirements
 RUN apt-get update && apt-get install zip unzip libzip-dev  -y \
