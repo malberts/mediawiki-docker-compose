@@ -37,15 +37,14 @@ As per the [VisualEditor/Parsoid documentation](https://www.mediawiki.org/wiki/E
 
 
 ## Short URL
-Add the following to `LocalSettings.php` to enable the defaut short URLs:
+Add `$wgArticlePath` to `LocalSettings.php`.
 
-    $wgArticlePath = "/$1";
+The default URL `http://localhost:8080/index.php/Main_Page` will be rewritten to:
 
-The default Apache rewrite rules rewrite the entire URL to just the page title.
-Example:
-`http://localhost:8080/index.php/Main_Page`
-becomes
-`http://localhost:8080/Main_Page`
+| $wgArticlePath | Rewrite                                |
+| :------------- | :------------------------------------- |
+| `"/$1"`        | `http://localhost:8080/Main_Page`      |
+| `"/wiki/$1"    | `http://localhost:8080/wiki/Main_Page` |
 
 
 ## Additional Composer dependencies
