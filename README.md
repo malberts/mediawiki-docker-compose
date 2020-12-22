@@ -29,10 +29,10 @@ The solution is to add the following to your `LocalSettings.php`:
 
 The `url` value must be changed acording to the `docker-compose.yml` service name:
 
-| Server            | Service     | url                            |
-| :---------------- | :---------- | :----------------------------- |
-| [Apache](apache)  | `mediawiki` | `http://mediawiki:80/rest.php` |
-| [Nginx](nginx)    | `nginx`     | `http://nginx:80/rest.php`     |
+| Server                              | Service     | url                            |
+| :---------------------------------- | :---------- | :----------------------------- |
+| [Apache](apache/docker-compose.yml) | `mediawiki` | `http://mediawiki:80/rest.php` |
+| [Nginx](nginx/docker-compose.yml)   | `nginx`     | `http://nginx:80/rest.php`     |
 
 The reason for this error is within the `mediawiki` container the implicit default value will be "`http://localhost:8080/rest.php`".
 However, that default URL does not resolve from inside that container, so instead the URL must be overriden to refer to the hostname and port visible to that container.
