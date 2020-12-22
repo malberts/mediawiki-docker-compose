@@ -55,5 +55,6 @@ The default URL `http://localhost:8080/index.php/Main_Page` will be rewritten to
 
 Additional dependencies can be installed using a custom image and Composer 1.
 
-Custom image specifying dependencies: [Dockerfile](apache/Dockerfile)
+Custom image specifying dependencies: [Dockerfile](apache/mediawiki/Dockerfile)
+
 Versions: [composer.local.json](apache/composer.local.json)
