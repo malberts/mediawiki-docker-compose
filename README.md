@@ -27,7 +27,8 @@ The solution is to add the following to your `LocalSettings.php`:
     ];
     wfLoadExtension( 'Parsoid', 'vendor/wikimedia/parsoid/extension.json' );
 
-In the URL, the `mediawiki` domain refers to the name of the `mediawiki` service in `docker-compose.yml`.
+In the URL, for Apache the `mediawiki` hostname refers to the name of the `mediawiki` service in `docker-compose.yml`.
+For Nginx it should be `nginx` instead as it refers to the `nginx` service.
 
 The reason for this error is within the `mediawiki` container the implicit default value will be "http://localhost:8080/rest.php".
 However, that default URL does not resolve from inside that container, so instead the URL must be overriden to refer to the hostname and port visible in that container.

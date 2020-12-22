@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  mediawiki:
+    build:
+      context: ./
+      dockerfile: ./mediawiki/Dockerfile
+    restart: always
+    links:
+      - database
+    volumes:
+      - html:/var/www/html
+      - ./images:/var/www/html/images
+      - ./composer.local.json:/var/www/html/composer.local.json
+      - ./LocalSettings.php:/var/www/html/LocalSettings.php
+    depends_on:
+      - database
+
+  database:
+    image: mariadb
+    restart: always
+    volumes:
+      - database:/var/lib/mysql
+    env_file: .env
+
+  nginx:
+    image: nginx
+    restart: always
+    volumes:
+      - ./etc/nginx.conf:/etc/nginx/nginx.conf
+      - html:/var/www/html
+    depends_on:
+     - mediawiki
+    ports:
+      - 8080:80
+
+volumes:
+  database:
+  html:
